@@ -7,6 +7,8 @@ if ["%~1"] == ["--remove"] (set "removeheic=true" & shift)
 if ["%~1"] == [""] (echo Nothing was specified. Please specify something. & goto help)
 if ["%~1"] == ["-h"] goto help
 if ["%~1"] == ["--help"] goto help
+if ["%~1"] == ["-v"] goto version
+if ["%~1"] == ["--version"] goto version
 if ["%~1"] == ["--install"] goto pyinstall
 if ["%~1"] == ["--uninstall"] goto pyremove
 
@@ -37,12 +39,19 @@ goto :eof
 
 :help
 echo.
-echo Usage^: heic2ddw ^[^<options^>^] ^[^<files^>^]
+echo Usage^: heic2ddw 0.2-alpha ^[^<options^>^] ^[^<files^>^]
 echo.
 echo Options:
 echo  -h ^[--help^]         Shows this help message.
 echo  --install           Installs python requirements.
 echo  --uninstall         Uninstalls python requirements.
 echo  -r ^[--remove^]       Deletes heic files after conversion.
+echo  -v ^[--version^]       Prints heic2ddw version.
+echo.
+goto :eof
+
+:version
+echo.
+echo. heic2ddw Ver. 0.2-alpha.
 echo.
 goto :eof
