@@ -1,6 +1,7 @@
 @echo off
 
 set "removeheic=false"
+set scriptdir=%~dp0
 
 if ["%~1"] == ["-r"] (set "removeheic=true" & shift)
 if ["%~1"] == ["--remove"] (set "removeheic=true" & shift)
@@ -16,8 +17,8 @@ if ["%~1"] == ["--uninstall"] goto pyremove
 if NOT EXIST "%~1" (echo File does not exist. & goto :eof)
 cd "%~dp1"
 md "%~n1"
-python "%~dp0\extract_heic.py" "%~nx1" "%~n1"
-python "%~dp0\convert_to_json.py" "%~n1"
+python "%scriptdir%\extract_heic.py" "%~nx1" "%~n1"
+python "%scriptdir%\convert_to_json.py" "%~n1"
 cd "%~n1_wdd"
 ren "%~n1_wdd".json theme.json
 cd ..
